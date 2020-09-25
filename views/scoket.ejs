@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Test</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var x = document.getElementById('div')
+            var socket = io.connect('/');
+            socket.on('announcement',function(data){
+                x.innerText = data.message;
+                console.log(data.message);});
+            socket.emit('event',{message:'Hey server how are you!'});
+        </script>
+        <div id='div' style="padding-left: 25%;">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+
+        </div>
+
+    </body>
+</html>

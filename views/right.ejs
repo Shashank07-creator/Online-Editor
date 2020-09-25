@@ -1,0 +1,34 @@
+<!docType html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="Statics/app.css">
+<script>
+function showtext()
+{
+a = document.getElementById("t1").value
+// console.log(a);
+document.getElementById("output1").innerHTML = a
+}
+</script>
+</head>
+<body>
+<!-- <h2 align="center">Online HTML Editor</h2> -->
+<br/>
+
+<div class='container'>
+	
+<form  id = 'f1' method='post' action = 'share_redirect'>
+	<div class='row'>
+	<div class='col-sm'>
+		<textarea id="t1" form="f1" cols="80" rows="22" name="textArea" onkeyup="showtext()" placeholder="Type your code here" style="border:2px solid black"></textarea>
+	</div>
+
+	<div class='col-sm' id='output1' style="border:1px solid blue;position:relative;"><div id='welcome'>Welcome to Online Editor</div></div>
+</div>
+
+<input type='submit' class="btn btn-outline-primary" value='Share'>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		window.onbeforeunload = function (event) {
+    var message = 'Important: Please click on \'Save\' --button to leave this page.';
+    if (typeof event == 'undefined') {
+        event = window.event;
+    }
+    if (event) {
+        event.returnValue = message;
+    }
+    return message;
+};
+
+	</script>
+</head>
+<frameset rows="10%,*" noresize border='0'>
+	<frame src='top'></frame>
+<frameset cols="12%,*" border='4'>
+	<frame src='left'></frame>
+	<frame src='right' name='right'></frame>
+</frameset>
+</frameset>
+</html>
