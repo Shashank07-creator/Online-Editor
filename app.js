@@ -4,7 +4,7 @@ var express  = require("express"),
     bodyparser = require("body-parser");
     fetch = require("node-fetch")
     
-let user_name
+let user_name = 'default'
 
 // --------------------------------------------Declarations------------------------------------------------------------------------
 
@@ -60,9 +60,7 @@ let userid="default"
 app.post('/loginuser',(req,res)=>{
     console.log(req.body)
     user_name = req.body.username;
-    console.log(user_name)
     let password = req.body.password;
-    console.log(password)
     login_db.create({name:user_name,passkey:password},(err)=>{if(!err)console.log('user registered')})
     userid = login_db.findOne({$e:{name:user_name}},(err,d)=>{
         return d
@@ -70,16 +68,24 @@ app.post('/loginuser',(req,res)=>{
     res.redirect('/right')
 })
 
+app.get('/uservalue',(req,res)=>{
+    res.send(JSON.stringify(user_name))
+})
+
+app.get('/logout',(req,res)=>{
+    user_name='default'
+    console.log('user logged out');
+    res.redirect('/right')
+}) 
+
 app.get('/signup',async (req,res)=>{
     // let t = await getset()
     // console.log(t+" from server2");
     // res.send(t);
-    fetch('http://localhost:3000/testing',{credentials:'same-origin'}).then(res=> res.text()).then(data=> t = data).then(()=>{res.send(t)});
+    res.render('login')
+    // fetch('http://localhost:3000/testing',{credentials:'same-origin'}).then(res=> res.text()).then(data=> t = data).then(()=>{res.send(t)});
 })
 
-app.get('/home',(req,res)=>{
-    res.send(t)
-})
 
 app.get('/preloader',(req,res)=>{
     res.render("preloader");
@@ -90,7 +96,7 @@ app.get('/left',(req,res)=>{
 })
 
 app.get('/top',(req,res)=>{
-    res.render("top");
+    res.render("top",{user:user_name});
 })
 
 app.get('/right',(req,res)=>{
@@ -98,6 +104,7 @@ app.get('/right',(req,res)=>{
 });
 
 app.post('/share_redirect',(req,res)=>{
+    if(user_name!='default'){
     let txt = req.body.textArea;
     console.log(user_name);
     project_db.create({name:user_name,code:txt},(err)=>{
@@ -109,6 +116,10 @@ app.post('/share_redirect',(req,res)=>{
         }
     })
     res.redirect('share_data');
+    }
+    else{
+        res.send('<h1>Login to Continue')
+    }
 })
 
 app.get('/share_data',(req,res)=>{

@@ -1,12 +1,20 @@
 <html>
+    <script>
+        alert("* Do not enter confidential data in this form")
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <body>
-        <h1>Login </h1> <small>dummy to check connections</small>
+        <div class="container">
+    <h1>Login </h1>
         <form action="loginuser" method="post">
-            <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" name="password">
-            <br/>
-            <input type="submit">
-            <input type="reset">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" name="username">
+            </div>
+            <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+            <input type="submit" class="btn btn-outline-primary">
         </form>
+        </div>
     </body>
 </html>

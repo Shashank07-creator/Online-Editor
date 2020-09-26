@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-
+    <% if(user=='default') {%>
+    <script src="Statics\reload.js"></script>
+    <% } %>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-    
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
+    <a class="navbar-brand" href="#">
+        <img src="Statics\favicon5.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        My Editor
+      </a>
     <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav text-right">
             <li class="nav-item active">
+                <% if(user!="default"){ %>
+                    <a class="nav-link" href="profile" target='right'>Welcome <%= user%></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="logout" target='right'>Logout</a>
+            </li>
+                <% } else { %>
                 <a class="nav-link" href="login" target='right'>Login</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="signup" target='right'>Signup</a>
             </li>
+            <% } %>
         </ul>
     </div>
 
