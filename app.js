@@ -11,7 +11,7 @@ let user_name
 app.set("view engine","ejs");
 
 app.use(bodyparser.urlencoded({extended:true}));
-app.use("./Statics",express.static("Statics"));
+app.use("/Statics",express.static("Statics"));
 
 // -------------------------------------------Database------------------------------------------------------------------------------
 
@@ -57,7 +57,8 @@ app.get('/login',(req,res)=>{
 
 let userid="default"
 
-app.get('/loginuser',(req,res)=>{
+app.post('/loginuser',(req,res)=>{
+    console.log(req.body)
     user_name = req.body.username;
     console.log(user_name)
     let password = req.body.password;
@@ -111,13 +112,6 @@ app.post('/share_redirect',(req,res)=>{
 })
 
 app.get('/share_data',(req,res)=>{
-    // txt = "<h1>Code to check</h1><br/><p> Sample code to check working</p></p>working fine</p>"
-    // project_db.create({name:'test1',code:txt},(err)=>{
-    //     if(err){
-    //         console.log(err);
-    //     }
-    //     else{ console.log("added")}
-    // })
     res.render('share')
 });
 
