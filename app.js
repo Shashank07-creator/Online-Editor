@@ -75,7 +75,7 @@ app.get('/uservalue',(req,res)=>{
 app.get('/logout',(req,res)=>{
     user_name='default'
     console.log('user logged out');
-    res.redirect('/right')
+    res.redirect('/top')
 }) 
 
 app.get('/signup',async (req,res)=>{
